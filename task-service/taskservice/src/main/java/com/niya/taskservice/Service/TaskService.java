@@ -42,4 +42,9 @@ public class TaskService {
     public Task getById(Long id) {
         return taskRepository.findById(id).orElseThrow(()->new RuntimeException("vhghgh"));
     }
+
+    public void deleteByid(Long id) {
+
+        taskRepository.deleteById(id);
+    }
 }
