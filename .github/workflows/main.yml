@@ -23,3 +23,4 @@ jobs:
 
       - name: Build (skip tests)
         run: mvn -B clean package -DskipTests
+        working-directory: task=service
