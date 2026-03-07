@@ -8,6 +8,7 @@ public class TaskCreateRequest {
 
    @NotNull(message = "Title ids require")
     private String title;
+
     @NotNull(message = "Title ids require")
     private String status;
 }
