@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class TaskCreateRequest {
 
-   @NotNull
+   @NotNull(message = "Title ids require")
     private String title;
+    @NotNull(message = "Title ids require")
     private String status;
 }

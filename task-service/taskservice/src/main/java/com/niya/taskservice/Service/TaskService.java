@@ -4,6 +4,9 @@ import com.niya.taskservice.DTO.TaskCreateRequest;
 import com.niya.taskservice.DTO.TaskResponse;
 import com.niya.taskservice.Model.Task;
 import com.niya.taskservice.Repository.TaskRepository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,12 +37,13 @@ public class TaskService {
         return taskResponse;
     }
 
-    public List<Task> getTasks()
+    public Page<Task> getTasks(Pageable pageable)
     {
-        return taskRepository.findAll();
+        return taskRepository.findAll(pageable);
     }
 
     public Task getById(Long id) {
+
         return taskRepository.findById(id).orElseThrow(()->new RuntimeException("vhghgh"));
     }
 

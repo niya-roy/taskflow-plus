@@ -4,6 +4,9 @@ import com.niya.taskservice.DTO.TaskCreateRequest;
 import com.niya.taskservice.DTO.TaskResponse;
 import com.niya.taskservice.Model.Task;
 import com.niya.taskservice.Service.TaskService;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,15 +25,16 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskResponse createTask(@RequestBody TaskCreateRequest taskCreateRequest)
+    public TaskResponse createTask(@Valid @RequestBody TaskCreateRequest taskCreateRequest)
     {
         return  taskService.createTask(taskCreateRequest);
     }
 
     @GetMapping
-    public List<Task> getAll()
+    public Page<Task> getAll(Pageable pageable)
     {
-        return taskService.getTasks();
+
+        return taskService.getTasks(pageable);
     }
 
     @GetMapping("/{id}")
